@@ -6,12 +6,11 @@ export default function GlitchEffect({ imageSrc }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    let renderer, scene, camera, planeMesh, isHovered = false;
-    let hoverDuration = 0;
+    let renderer, scene, camera, planeMesh;
+    let clock;
 
     const ANIMATION_CONFIG = {
-      updateFrequency: 0.1,
-      glitchIntensityMod: 0.4, // Slightly increased intensity
+      glitchIntensityMod: 0.05, // Subtle glitch effect
     };
 
     const vertexShader = `
@@ -25,6 +24,7 @@ export default function GlitchEffect({ imageSrc }) {
     const fragmentShader = `
       uniform sampler2D tDiffuse;
       uniform float glitchIntensity;
+      uniform float time;
       varying vec2 vUv;
 
       void main() {
@@ -33,8 +33,8 @@ export default function GlitchEffect({ imageSrc }) {
 
         if (glitchIntensity > 0.0) {
             float segment = floor(uv.y * 12.0); 
-            float randomValue = fract(sin(segment * 12345.6789 + glitchIntensity) * 43758.5453); 
-            vec2 offset = vec2(randomValue * 0.02, 0.0) * glitchIntensity; // Slightly larger offset
+            float randomValue = fract(sin(segment * 12345.6789 + time) * 43758.5453); 
+            vec2 offset = vec2(randomValue * 0.01, 0.0) * glitchIntensity; // Subtle offset
 
             vec4 redGlitch = texture2D(tDiffuse, uv + offset);
             vec4 greenGlitch = texture2D(tDiffuse, uv - offset);
@@ -54,18 +54,29 @@ export default function GlitchEffect({ imageSrc }) {
     `;
 
     function initializeScene(texture) {
-      camera = new THREE.PerspectiveCamera(80, 1, 0.01, 10);
+      const { offsetWidth, offsetHeight } = containerRef.current;
+
+      // Match camera aspect ratio to container
+      camera = new THREE.PerspectiveCamera(80, offsetWidth / offsetHeight, 0.01, 10);
       camera.position.z = 1;
 
       scene = new THREE.Scene();
 
       const shaderUniforms = {
         tDiffuse: { value: texture },
-        glitchIntensity: { value: 0.0 },
+        glitchIntensity: { value: ANIMATION_CONFIG.glitchIntensityMod },
+        time: { value: 0.0 },
       };
 
-      // Adjust PlaneGeometry proportions to mimic object-cover
-      const geometry = new THREE.PlaneGeometry(2, 2);
+      // Adjust PlaneGeometry proportions based on texture and container aspect ratio
+      const imageAspect = texture.image.width / texture.image.height;
+      const containerAspect = offsetWidth / offsetHeight;
+
+      const geometry =
+        imageAspect > containerAspect
+          ? new THREE.PlaneGeometry(2, 2 / containerAspect * imageAspect)
+          : new THREE.PlaneGeometry(2 * containerAspect / imageAspect, 2);
+
       planeMesh = new THREE.Mesh(
         geometry,
         new THREE.ShaderMaterial({
@@ -78,50 +89,38 @@ export default function GlitchEffect({ imageSrc }) {
       scene.add(planeMesh);
 
       renderer = new THREE.WebGLRenderer();
-      renderer.setSize(containerRef.current.offsetWidth, containerRef.current.offsetHeight);
+      renderer.setSize(offsetWidth, offsetHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
 
       containerRef.current.appendChild(renderer.domElement);
 
-      containerRef.current.addEventListener("mouseover", () => (isHovered = true));
-      containerRef.current.addEventListener("mouseout", () => {
-        isHovered = false;
-        shaderUniforms.glitchIntensity.value = 0;
-      });
+      clock = new THREE.Clock();
 
       function animate() {
-        requestAnimationFrame(animate);
-
-        if (isHovered) {
-          hoverDuration += ANIMATION_CONFIG.updateFrequency;
-
-          if (hoverDuration >= 0.5) {
-            hoverDuration = 0;
-            shaderUniforms.glitchIntensity.value = Math.random() * ANIMATION_CONFIG.glitchIntensityMod;
-          }
-        }
-
+        shaderUniforms.time.value = clock.getElapsedTime();
         renderer.render(scene, camera);
+        requestAnimationFrame(animate);
       }
 
       animate();
     }
 
-    // Load the texture and ensure the image uses "object-cover" logic
     const loader = new THREE.TextureLoader();
     loader.load(imageSrc, (texture) => {
-      texture.minFilter = THREE.LinearFilter; // Smooth scaling
-      texture.wrapS = THREE.ClampToEdgeWrapping; // Prevent stretching
+      texture.minFilter = THREE.LinearFilter;
+      texture.wrapS = THREE.ClampToEdgeWrapping;
       texture.wrapT = THREE.ClampToEdgeWrapping;
       initializeScene(texture);
     });
 
     return () => {
-      renderer.dispose();
-      planeMesh.geometry.dispose();
-      planeMesh.material.dispose();
+      if (renderer) renderer.dispose();
+      if (planeMesh) {
+        planeMesh.geometry.dispose();
+        planeMesh.material.dispose();
+      }
     };
   }, [imageSrc]);
 
-  return <div ref={containerRef} className="w-full h-full grayscale hidden lg:block"></div>;
+  return <div ref={containerRef} className="w-full h-full grayscale lg:hidden "></div>;
 }
