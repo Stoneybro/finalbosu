@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* globals.css */
+html,
+body {
+  min-height: 100%; /* Ensure content can start with at least full viewport height */
+  margin: 0; /* Remove default margins */
+  padding: 0;
+  box-sizing: border-box;
+  display: block; /* Ensure normal block-level flow */
+}
+
+#__next {
+  min-height: 100%; /* Allow Next.js app to take up the full page height */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+}
+
