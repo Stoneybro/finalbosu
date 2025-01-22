@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex flex-col ">
       <Nav />
       <main className="bg-[#06053897] flex text-[#e61949]   flex-col">
-        <section className=" bg-bluenoise-layer bg-repeat bg-center bg-[length:100px_100px] relative flex  justify-center items-center">
+        <section className=" bg-bluenoise-layer bg-repeat bg-center bg-[length:10vw_10vw] relative flex  justify-center items-center">
           <div className="h-[100vh] flex items-start justify-center w-full pt-8">
           <div className="lg:w-[80%] w-[90%] lg:h-[90%] h-[90%] relative ">
             <GlitchEffect imageSrc="/finalbosu2.jpg" />
