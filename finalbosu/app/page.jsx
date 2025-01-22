@@ -20,26 +20,31 @@ export default function Home() {
           <div className="hidden [writing-mode:vertical-lr] text-upright absolute h-[70%] lg:right-4 right-2 justify-between top-4 lg:flex items-center before:content-[''] before:top-0 before:right-[-0.1rem] lg:before:w-[2px] before:w-[1px] before:h-full before:absolute before:bg-[#e61949]"><div className="lg:text-2xl text-xl font-bold">警告</div><div className=" lg:text-[8px] text-[6px] flex flex-col-reverse font-poppins "><div className="">THIS IS NOT THE OFFICIAL WEBSITE FOR FINALBOSU</div>
           <div className="">THIS IS A COMMUNITY MEMBER'S SUBMISSION FOR AN EVENT</div> </div></div>
         </section>
-        <section className="w-[80%] self-center h-[100vh] flex items-center">
-          <div className="flex flex-wrap justify-between items-center">
-            <div className="text-white flex flex-col justify-center items-center font-poppins">
+        <section className="w-[80%] self-center h-[80vh] lg:h-[100vh] flex items-center">
+          <div className="flex flex-wrap  items-center gap-4 lg:gap-0">
+            <div className="flex flex-col justify-center items-center lg:flex-row w-full lg:justify-between">
+            <div className="text-white flex flex-col justify-center items-center font-poppins gap-2 lg:gap-0">
               <div className="text-3xl">未来</div>
-              <div className="">(MI-RAI)</div>
+              <div className="text-3xl">(MI-RAI)</div>
               <div className="">THE FUTURE</div>
            
             </div>
-          <div className="font-poppins text-[11rem] text-white leading-none ">
+          <div className="font-poppins text-[clamp(3rem,10vw,11rem)] text-white leading-none ">
           CRAFTING 
           </div>
-          <div className="font-poppins text-[11rem] text-white leading-none ">
+          </div>
+          <div className="flex justify-between w-full items-center">
+          <div className="font-poppins text-[clamp(5rem,10vw,11rem)] text-white leading-none ">
           THE FUTURE 
           </div>
-          <div className="w-[15vw]"><video src="/finalbosuvid1.mp4" autoPlay  loop /></div>
-          
-          <div className="font-poppins text-[11rem] text-white leading-none ">
+          <div className="lg:w-[15vw]"><video src="/finalbosuvid1.mp4" autoPlay  loop /></div>
+          </div>
+          <div className="flex flex-col justify-center items-center lg:flex-row w-full lg:justify-between">
+          <div className="font-poppins text-[clamp(5rem,10vw,11rem)] text-white leading-none ">
            OF ANIME
           </div>
-        <div className="text-white w-[15vw] font-poppins">Final Bosu is a Web3-based anime IP that promotes decentralized ownership and fan-creator collaboration.</div>
+        <div className="text-white lg:w-[15vw] font-poppins">Final Bosu is a Web3-based anime IP that promotes decentralized ownership and fan-creator collaboration.</div>
+          </div>
           </div>
         </section>
 
