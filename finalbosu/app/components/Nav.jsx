@@ -50,7 +50,7 @@ export const Nav = () => {
   };
 
   return (
-    <div className="w-full text-[#e61949] bg-[#06053897] px-2  lg:px-8 bg-bluenoise-layer bg-repeat bg-center bg-[length:10vw_10vw]  flex flex-col justify-center items-center gap-2 lg:gap-4 pt-2 lg:pt-4">
+    <div className="w-full text-[#e61949] bg-[#06053897] px-2  lg:px-8 bg-bluenoise-layer bg-repeat bg-center bg-[length:10vw_10vw] lg:bg-[length:100px_100px] flex flex-col justify-center items-center gap-2 lg:gap-4 pt-2 lg:pt-4">
       <div className="w-full flex justify-center ">
         <div className="font-anton text-[clamp(7.5rem,60vw,10.5rem)] xsm:text-[7rem] lg:text-[11rem]   leading-none xsm:flex "> <div className="">FINAL</div>
         <div className="hidden xsm:block">-</div>
