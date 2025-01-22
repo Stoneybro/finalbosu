@@ -1,7 +1,5 @@
 import { Nav } from "./components/Nav";
 import GlitchEffect from "./components/GlitchEffect";
-import GlitchEffectMobile from "./components/GlitchEffectMobile";
-
 import Image from "next/image";
 
 export default function Home() {
@@ -48,6 +46,28 @@ export default function Home() {
           </div>
           </div>
         </section>
+      <section className=" w-[80%] self-center lg:h-[100vh] flex flex-col  lg:flex-row lg:justify-between font-poppins">
+        <div className="relative w-[30vw] hidden lg:block h-full self-center">
+      <Image src={'/finalbosu1.jpg'} fill className="object-cover grayscale" />
+      </div>
+      <div className="flex flex-col justify-center self-center items-start py-6">
+        <div className="">
+        <div className="text-white flex flex-col justify-center items-center font-poppins  lg:gap-0 pb-6 lg:pb-4">
+              <div className="text-4xl">所有</div>
+              <div className="text-4xl">(SHOYŪ)</div>
+              <div className="">OWNERSHIP</div>
+            </div>
+        </div>
+        <div className="text-white text-[3rem] hidden max-w-[20vw] leading-tight">FANS AND CREATORS BECOME OWNERS</div>
+      </div>
+      <div className="flex flex-col justify-between items-start pb-6 gap-6 lg:gap-0">
+
+        <div className="relative w-full self-center max-w-[25rem] lg:max-w-none h-[38vh] lg:h-[20rem]">
+        <Image src={'/finalbosu555.jpg'} fill className="object-cover grayscale" />
+        </div>
+        <div className="text-white lg:max-w-[20vw] leading-tight font-poppins text-center lg:text-left">Ownership in Final Bosu allows supporters to mint a unique 1/1 character in the anime universe, immortalizing themselves through the Bosu Legacy Collection on the Ethereum blockchain.</div>
+      </div>
+      </section>
 
       </main>
     </div>
