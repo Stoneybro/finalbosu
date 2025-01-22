@@ -113,7 +113,7 @@ export default function Home() {
         </section>
 
         {/* Section 3: Ownership */}
-        <section className="w-[80%] pb-16 self-center lg:h-[100vh] flex flex-col lg:flex-row lg:justify-between font-poppins">
+        <section className="w-[80%] pb-8 self-center lg:h-[100vh] flex flex-col lg:flex-row lg:justify-between font-poppins">
           <div className="relative w-[30vw] hidden lg:block h-full self-center">
             <Image src={"/finalbosu1.jpg"} fill className="object-cover grayscale" />
           </div>
