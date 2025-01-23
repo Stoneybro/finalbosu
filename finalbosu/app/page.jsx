@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
 import Lenis from '@studio-freight/lenis';
-
+import CursorAnimation from "./components/CursorAnimation";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 export default function Home() {
@@ -77,8 +77,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
+      <CursorAnimation />
       <Nav />
       <main className="bg-[#06053897] flex text-[#e61949] bg-bluenoise-layer bg-repeat bg-center bg-[length:10vw_10vw] lg:bg-[length:100px_100px] flex-col gap-16">
+
         {/* Section 1: Main Showcase */}
         <section className="relative flex justify-center items-center">
           <div className="h-[100vh] flex items-start justify-center w-full pt-8">

@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
+    "gsap": "^3.12.7",
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
+    "splitting": "^1.1.0",
     "swiper": "^11.2.1",
     "three": "^0.172.0"
   },
