@@ -5,9 +5,33 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useEffect } from "react";
+import Lenis from '@studio-freight/lenis';
+
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2, // Smooth scroll duration
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing
+      smooth: true,
+    });
+  
+    function raf(time) {
+      lenis.raf(time); // Link Lenis to the animation frame
+      requestAnimationFrame(raf);
+    }
+  
+    requestAnimationFrame(raf); // Start RAF loop
+  
+    return () => {
+      // Clean up Lenis instance
+      lenis.destroy();
+    };
+  }, []);
+  
+
   const textItems = [
     'against.all.odds',
     'Metora',
