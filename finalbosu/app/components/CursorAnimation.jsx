@@ -62,8 +62,8 @@ const CursorAnimation = () => {
   }, []);
 
   return (
-    <div className="cursor">
-      <div className="cursor-text text-[#e61949] font-poppins font-black">
+    <div className="cursor hidden lg:block">
+      <div className="cursor-text text-[#e61949] font-poppins font-black ">
         {"against-all-odds-".split("").map((char, index) => (
           <span key={index} className="font-black">{char}</span>
         ))}

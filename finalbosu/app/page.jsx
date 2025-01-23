@@ -112,12 +112,12 @@ export default function Home() {
                 <div className="text-3xl">(MI RAI)</div>
                 <div>THE FUTURE</div>
               </div>
-              <div className="font-poppins text-[clamp(1rem,12vw,11rem)] text-white leading-none">
+              <div className="font-poppins text-[clamp(1rem,11vw,11rem)] text-white leading-none">
                 CRAFTING
               </div>
             </div>
             <div className="flex lg:justify-between w-full items-center justify-center">
-              <div className="font-poppins text-[clamp(1rem,12vw,11rem)] text-white leading-none">
+              <div className="font-poppins text-[clamp(1rem,11vw,11rem)] text-white leading-none">
                 THE FUTURE
               </div>
               <div className="w-5vw lg:w-[15vw] hidden lg:block">
@@ -125,7 +125,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col justify-center items-center lg:flex-row w-full lg:justify-between">
-              <div className="font-poppins text-[clamp(1rem,12vw,11rem)] text-white leading-none">
+              <div className="font-poppins text-[clamp(1rem,11vw,11rem)] text-white leading-none">
                 OF ANIME
               </div>
               <div className="w-5vw max-w-[400px] lg:w-[15vw] lg:hidden mt-6">
@@ -163,8 +163,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 4: Additional Ownership Details */}
-        <section className="w-[80%] self-center lg:h-[100vh]  flex flex-col lg:flex-row lg:justify-between font-poppins">
+        {/* Section 4: Dare to Dream */}
+        <section className="w-[80%] self-center lg:h-[100vh] gap-6  flex flex-col lg:flex-row lg:justify-between font-poppins">
         <div className="flex flex-col justify-between items-start py-6 gap-6 lg:gap-0">
           <div className="text-white flex flex-col justify-center self-center items-center font-poppins pb-6 lg:pb-4">
               <div className="text-4xl">夢</div>
@@ -177,8 +177,8 @@ export default function Home() {
 
           </div>
           <div className="flex flex-col justify-center self-center items-start py-6">
-            <div className="text-white text-[clamp(1rem,5vh,2rem)] lg:text-[3rem] pb-6 font-poppins self-center">DARE TO DREAM</div>
-            <div className="text-white lg:max-w-[25vw] leading-tight f text-center lg:text-left font-poppins">
+            <div className="text-white text-[clamp(1rem,5vh,2rem)] lg:text-[3rem] pb-6 font-poppins self-center text-center">DARE TO DREAM</div>
+            <div className="text-white lg:max-w-[25vw] leading-tight f text-center lg:text-left font-poppins self-center">
             Launching on Abstract blockchain simplifies access for fans, reduces costs, and enhances scalability, making it ideal for Final Bosu’s decentralized, community-driven anime IP.            </div>
           </div>
           <div className="relative w-[25vw] hidden lg:block h-full self-center">
