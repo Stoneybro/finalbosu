@@ -2,6 +2,7 @@
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
@@ -59,7 +60,9 @@ export const Nav = () => {
       <div className="flex justify-between px-2 lg:px-0 w-full xsm:w-[95%] lg:w-[80%]">
         <div className="flex w-full items-center justify-between text-sm">
           <div>
-            <div className="leading-none font-poppins hidden lg:block">OFFICIAL WEBSITE</div>
+            <div className="leading-none font-poppins hidden lg:block">      <a href="https://finalbosu.com/" target="_blank" rel="noopener noreferrer">
+        OFFICIAL WEBSITE
+      </a> </div>
           </div>
           <div className="w-[100%] lg:w-[70%] bg-[#e61949] text-[#06053897] ">
             <Slider {...settings}>
@@ -71,7 +74,9 @@ export const Nav = () => {
             </Slider>
           </div>
           <div>
-            <div className="font-poppins leading-none hidden lg:block">COLLECTION</div>
+          <div className="leading-none font-poppins hidden lg:block">      <a href="https://opensea.io/collection/finalbosu" target="_blank" rel="noopener noreferrer">
+        COLLECTION
+      </a> </div>
           </div>
         </div>
       </div>
