@@ -189,7 +189,7 @@ export default function Home() {
              {/* Section 5: community */}
              <section className="w-[80%] self-center lg:h-[100vh] flex flex-col lg:flex-row lg:justify-between font-poppins">
         <div className="flex flex-col justify-between items-start py-6 gap-6 lg:gap-0">
-          <div className="text-white flex flex-col justify-center self-center items-center font-poppins pb-6 lg:pb-4">
+          <div className="text-white flex flex-col justify-center self-center items-center font-poppins pb-6 ">
               <div className="text-4xl">共同体</div>
               <div className="text-4xl">(KYŌDŌTAI)</div>
               <div>COMMUNITY</div>
