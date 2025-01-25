@@ -6,12 +6,12 @@ export default function GlitchEffect({ imageSrc }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    let renderer, scene, camera, planeMesh, isHovered = false;
-    let hoverDuration = 0;
+    let renderer, scene, camera, planeMesh;
+    let timeElapsed = 0;
 
     const ANIMATION_CONFIG = {
-      updateFrequency: 0.1,
-      glitchIntensityMod: 0.4, // Slightly increased intensity
+      updateFrequency: 0.05,
+      glitchIntensityMod: 0.3, // Slightly increased intensity
     };
 
     const vertexShader = `
@@ -64,7 +64,6 @@ export default function GlitchEffect({ imageSrc }) {
         glitchIntensity: { value: 0.0 },
       };
 
-      // Adjust PlaneGeometry proportions to mimic object-cover
       const geometry = new THREE.PlaneGeometry(2, 2);
       planeMesh = new THREE.Mesh(
         geometry,
@@ -83,23 +82,12 @@ export default function GlitchEffect({ imageSrc }) {
 
       containerRef.current.appendChild(renderer.domElement);
 
-      containerRef.current.addEventListener("mouseover", () => (isHovered = true));
-      containerRef.current.addEventListener("mouseout", () => {
-        isHovered = false;
-        shaderUniforms.glitchIntensity.value = 0;
-      });
-
       function animate() {
         requestAnimationFrame(animate);
 
-        if (isHovered) {
-          hoverDuration += ANIMATION_CONFIG.updateFrequency;
-
-          if (hoverDuration >= 0.5) {
-            hoverDuration = 0;
-            shaderUniforms.glitchIntensity.value = Math.random() * ANIMATION_CONFIG.glitchIntensityMod;
-          }
-        }
+        // Update glitch intensity over time
+        timeElapsed += ANIMATION_CONFIG.updateFrequency;
+        shaderUniforms.glitchIntensity.value = Math.abs(Math.sin(timeElapsed)) * ANIMATION_CONFIG.glitchIntensityMod;
 
         renderer.render(scene, camera);
       }
@@ -107,11 +95,10 @@ export default function GlitchEffect({ imageSrc }) {
       animate();
     }
 
-    // Load the texture and ensure the image uses "object-cover" logic
     const loader = new THREE.TextureLoader();
     loader.load(imageSrc, (texture) => {
-      texture.minFilter = THREE.LinearFilter; // Smooth scaling
-      texture.wrapS = THREE.ClampToEdgeWrapping; // Prevent stretching
+      texture.minFilter = THREE.LinearFilter;
+      texture.wrapS = THREE.ClampToEdgeWrapping;
       texture.wrapT = THREE.ClampToEdgeWrapping;
       initializeScene(texture);
     });
